@@ -49,10 +49,14 @@ const links: LinkProp[] = [
     :is-collapsed="isCollapsed"
     :links="links"
   />
-  <Separator />
-  <div class="px-5">
-    <SidebarAccounts
-      :class="{ 'hidden': isCollapsed }"
-    />
+  <Separator class="mb-4" />
+  <div
+    class="px-5 flex flex-col content-between gap-6"
+    :class="{ 'hidden': isCollapsed }"
+  >
+    <SidebarAccounts />
+    <div>
+      <SidebarCreateAccount />
+    </div>
   </div>
 </template>

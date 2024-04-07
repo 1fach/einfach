@@ -67,7 +67,7 @@ defineProps<NavProps>()
             buttonVariants({ variant: link.variant, size: 'sm' }),
             link.variant === 'default'
               && 'dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white',
-            'justify-start',
+            'justify-start text-base py-6',
           )"
         >
           <Icon

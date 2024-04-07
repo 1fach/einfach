@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const navCollapsedSize = 4
+const navCollapsedSize = 2
 const isCollapsed = ref(false)
 const defaultLayout = [265, 440, 655]
 

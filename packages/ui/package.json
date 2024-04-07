@@ -2,8 +2,6 @@
   "name": "ui",
   "version": "0.0.0",
   "private": true,
-  "main": "./index.ts",
-  "types": "./index.ts",
   "scripts": {
     "lint": "eslint ."
   },
@@ -11,18 +9,13 @@
     "autoprefixer": "^10.4.19",
     "eslint-config-custom": "workspace:*",
     "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.3",
     "tsconfig": "workspace:*",
     "vue": "^3.4.21"
   },
-  "dependencies": {
-    "primevue": "^3.50.0"
-  },
   "exports": {
-    "./globals.css": "./src/styles/globals.css",
     "./postcss.config": "./postcss.config.js",
     "./tailwind.config": "./tailwind.config.js",
-    "./components/*": "./src/components/*.vue",
-    "./presets/*": "./src/presets/*.ts"
+    "./components/*": "./src/components/*.vue"
   }
 }

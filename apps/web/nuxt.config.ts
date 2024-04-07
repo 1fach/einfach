@@ -1,5 +1,3 @@
-import { customMergeProps } from "./utils/prime-merge-props";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
@@ -10,18 +8,16 @@ export default defineNuxtConfig({
     strict: true,
   },
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "nuxt-primevue", "nuxt-icon"],
-  primevue: {
-    options: {
-      unstyled: true,
-      ptOptions: {
-        mergeProps: customMergeProps,
-      },
-    },
-    importPT: {
-      as: "Wind",
-      from: "ui/presets/wind",
-    },
+  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "nuxt-icon"],
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: "",
+    /**
+     * Directory that the component lives in.
+     * @default "./components/ui"
+     */
+    componentDir: "./components/ui",
   },
-  css: ["ui/globals.css"],
 });

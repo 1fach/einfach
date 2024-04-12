@@ -6,10 +6,10 @@ import defaultTheme from "tailwindcss/defaultTheme";
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./components/**/*.{vue,js,ts}",
+    "./components/**/*.{vue,ts}",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
-    "./app.{js,ts,vue}",
+    "./app.vue",
   ],
   safelist: ["dark"],
   prefix: "",

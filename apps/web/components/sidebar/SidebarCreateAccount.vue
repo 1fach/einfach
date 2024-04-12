@@ -31,7 +31,6 @@
           </Label>
           <Input
             id="name"
-            value="Pedro Duarte"
             class="col-span-3"
           />
         </div>
@@ -44,7 +43,6 @@
           </Label>
           <Input
             id="username"
-            value="@peduarte"
             class="col-span-3"
           />
         </div>

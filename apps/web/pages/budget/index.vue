@@ -45,7 +45,7 @@ export type Account = (typeof accounts)[number]
         :collapsed-size="navCollapsedSize"
         collapsible
         :min-size="15"
-        :max-size="20"
+        :max-size="25"
         :class="cn(isCollapsed && 'min-w-[50px] transition-all duration-300 ease-in-out')"
         @expand="onExpand"
         @collapse="onCollapse"

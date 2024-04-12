@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const navCollapsedSize = 2
 const isCollapsed = ref(false)
-const defaultLayout = [265, 440, 655]
+const defaultLayout = [100, 440]
 
 function onCollapse() {
   isCollapsed.value = true
@@ -63,7 +63,11 @@ export type Account = (typeof accounts)[number]
         id="app-panel"
         :default-size="defaultLayout[1]"
         :min-size="30"
-      />
+      >
+        <div class="container py-10 mx-auto">
+          <SpreadsheetDataTable />
+        </div>
+      </ResizablePanel>
     </ResizablePanelGroup>
   </TooltipProvider>
 </template>

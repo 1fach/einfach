@@ -10,7 +10,6 @@ import {
 } from 'radix-vue'
 import { SelectScrollDownButton, SelectScrollUpButton } from '.'
 
-
 defineOptions({
   inheritAttrs: false,
 })

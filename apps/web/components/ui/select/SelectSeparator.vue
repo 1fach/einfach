@@ -2,7 +2,6 @@
 import { type HTMLAttributes, computed } from 'vue'
 import { SelectSeparator, type SelectSeparatorProps } from 'radix-vue'
 
-
 const props = defineProps<SelectSeparatorProps & { class?: HTMLAttributes['class'] }>()
 
 const delegatedProps = computed(() => {

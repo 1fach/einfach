@@ -1,13 +1,9 @@
 <script setup lang="ts" generic="TData, TValue">
-import { columns } from './columns'
-import { data } from './data'
-
 import type {
   ColumnFiltersState,
   SortingState,
   VisibilityState,
 } from '@tanstack/vue-table'
-
 import {
   FlexRender,
   getCoreRowModel,
@@ -16,6 +12,8 @@ import {
   getSortedRowModel,
   useVueTable,
 } from '@tanstack/vue-table'
+import { columns } from './columns'
+import { data } from './data'
 
 const sorting = ref<SortingState>([])
 const columnFilters = ref<ColumnFiltersState>([])

@@ -32,9 +32,8 @@ const links: LinkProp[] = [
     label: '',
     icon: 'lucide:landmark',
     variant: 'ghost',
-  }
+  },
 ]
-
 </script>
 
 <template>
@@ -52,7 +51,7 @@ const links: LinkProp[] = [
   <Separator class="mb-4" />
   <div
     class="px-5 flex flex-col content-between gap-6"
-    :class="{ 'hidden': isCollapsed }"
+    :class="{ hidden: isCollapsed }"
   >
     <SidebarAccounts />
     <div>

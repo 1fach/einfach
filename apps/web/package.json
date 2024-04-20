@@ -22,7 +22,7 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.3.1",
+    "@nuxt/eslint": "^0.3.8",
     "@nuxt/fonts": "^0.6.1",
     "@nuxtjs/color-mode": "^3.4.0",
     "@nuxtjs/tailwindcss": "^6.11.4",

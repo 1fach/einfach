@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    rootId: "einfach",
+    rootId: 'einfach',
   },
   typescript: {
     typeCheck: true,
@@ -9,24 +9,30 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   modules: [
-    "@nuxtjs/color-mode",
-    "@nuxtjs/tailwindcss",
-    "@nuxt/fonts",
-    "nuxt-icon",
-    "shadcn-nuxt",
+    '@nuxt/eslint',
+    '@nuxtjs/color-mode',
+    '@nuxtjs/tailwindcss',
+    '@nuxt/fonts',
+    'nuxt-icon',
+    'shadcn-nuxt',
   ],
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
   colorMode: {
-    classSuffix: "",
+    classSuffix: '',
   },
   shadcn: {
     /**
      * Prefix for all the imported component
      */
-    prefix: "",
+    prefix: '',
     /**
      * Directory that the component lives in.
      * @default "./components/ui"
      */
-    componentDir: "./components/ui",
+    componentDir: './components/ui',
   },
-});
+})

@@ -2,7 +2,6 @@
 import { type HTMLAttributes, computed } from 'vue'
 import { Separator, type SeparatorProps } from 'radix-vue'
 
-
 const props = defineProps<SeparatorProps & { class?: HTMLAttributes['class'] }>()
 
 const delegatedProps = computed(() => {

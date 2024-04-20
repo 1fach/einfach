@@ -9,35 +9,34 @@ import {
   parse,
   startOfMonth,
   startOfToday,
-} from 'date-fns';
-import { buttonVariants } from '@/components/ui/button';
+} from 'date-fns'
+import { buttonVariants } from '@/components/ui/button'
 
 function getStartOfCurrentMonth() {
-  return startOfMonth(startOfToday());
+  return startOfMonth(startOfToday())
 }
 
 interface MonthPickerProps {
-  currentMonth: Date;
-  onMonthChange: (newMonth: Date) => void;
+  currentMonth: Date
+  onMonthChange: (newMonth: Date) => void
 }
 
 const { currentMonth } = defineProps<MonthPickerProps>()
 
 const currentYear = ref(format(currentMonth, 'yyyy'))
-const firstDayCurrentYear = computed(() => parse(currentYear.value, 'yyyy', new Date()));
+const firstDayCurrentYear = computed(() => parse(currentYear.value, 'yyyy', new Date()))
 const months = computed(() => eachMonthOfInterval({
   start: firstDayCurrentYear.value,
   end: endOfYear(firstDayCurrentYear.value),
-}));
+}))
 
 function previousYear() {
-  currentYear.value = format(add(firstDayCurrentYear.value, { years: -1 }), 'yyyy');
+  currentYear.value = format(add(firstDayCurrentYear.value, { years: -1 }), 'yyyy')
 }
 
 function nextYear() {
-  currentYear.value = format(add(firstDayCurrentYear.value, { years: 1 }), 'yyyy');
+  currentYear.value = format(add(firstDayCurrentYear.value, { years: 1 }), 'yyyy')
 }
-
 </script>
 
 <template>
@@ -60,7 +59,7 @@ function nextYear() {
               :class="cn(
                 buttonVariants({ variant: 'outline' }),
                 'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',
-                'absolute left-1'
+                'absolute left-1',
               )"
               type="button"
               @click="previousYear"
@@ -76,7 +75,7 @@ function nextYear() {
               :class="cn(
                 buttonVariants({ variant: 'outline' }),
                 'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100',
-                'absolute right-1 disabled:bg-slate-100'
+                'absolute right-1 disabled:bg-slate-100',
               )"
               type="button"
               :disabled="isFuture(add(firstDayCurrentYear, { years: 1 }))"
@@ -104,11 +103,11 @@ function nextYear() {
               name="day"
               :class="cn(
                 'inline-flex h-9 w-16 items-center justify-center rounded-md p-0 text-sm font-normal ring-offset-white transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 aria-selected:opacity-100 dark:ring-offset-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50 dark:focus-visible:ring-slate-800',
-                isEqual(month, currentMonth) &&
-                  'bg-slate-900 text-slate-50 hover:bg-slate-900 hover:text-slate-50 focus:bg-slate-900 focus:text-slate-50 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50 dark:hover:text-slate-900 dark:focus:bg-slate-50 dark:focus:text-slate-900',
-                !isEqual(month, currentMonth) &&
-                  isEqual(month, getStartOfCurrentMonth()) &&
-                  'bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-slate-50'
+                isEqual(month, currentMonth)
+                  && 'bg-slate-900 text-slate-50 hover:bg-slate-900 hover:text-slate-50 focus:bg-slate-900 focus:text-slate-50 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50 dark:hover:text-slate-900 dark:focus:bg-slate-50 dark:focus:text-slate-900',
+                !isEqual(month, currentMonth)
+                  && isEqual(month, getStartOfCurrentMonth())
+                  && 'bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-slate-50',
               )"
               :disabled="isFuture(month)"
               role="gridcell"

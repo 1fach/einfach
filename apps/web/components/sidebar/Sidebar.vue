@@ -18,41 +18,32 @@ const links: LinkProp[] = [
   {
     title: 'Budget',
     label: '128',
+    url: '/budget',
     icon: 'carbon:money',
-    variant: 'default',
   },
   {
     title: 'Reports',
     label: '9',
+    url: '/',
     icon: 'lucide:bar-chart-big',
-    variant: 'ghost',
   },
   {
     title: 'All Accounts',
     label: '',
+    url: '/accounts',
     icon: 'lucide:landmark',
-    variant: 'ghost',
   },
 ]
 </script>
 
 <template>
   <div :class="cn('flex h-[52px] items-center justify-center', isCollapsed ? 'h-[52px]' : 'px-2')">
-    <SidebarAccountSwitcher
-      :is-collapsed="isCollapsed"
-      :accounts="accounts"
-    />
+    <SidebarAccountSwitcher :is-collapsed="isCollapsed" :accounts="accounts" />
   </div>
   <Separator />
-  <SidebarNav
-    :is-collapsed="isCollapsed"
-    :links="links"
-  />
+  <SidebarNav :is-collapsed="isCollapsed" :links="links" />
   <Separator class="mb-4" />
-  <div
-    class="px-5 flex flex-col content-between gap-6"
-    :class="{ hidden: isCollapsed }"
-  >
+  <div class="px-5 flex flex-col content-between gap-6" :class="{ hidden: isCollapsed }">
     <SidebarAccounts />
     <div>
       <SidebarCreateAccount />

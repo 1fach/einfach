@@ -43,34 +43,21 @@ const table = useVueTable({
 <template>
   <div class="w-full">
     <div class="flex gap-2 items-center py-4">
-      <Input
-        class="max-w-sm"
-        placeholder="Filter emails..."
+      <Input class="max-w-sm" placeholder="Filter emails..."
         :model-value="table.getColumn('email')?.getFilterValue() as string"
-        @update:model-value=" table.getColumn('email')?.setFilterValue($event)"
-      />
+        @update:model-value=" table.getColumn('email')?.setFilterValue($event)" />
       <DropdownMenu>
         <DropdownMenuTrigger as-child>
-          <Button
-            variant="outline"
-            class="ml-auto"
-          >
-            Columns <Icon
-              name="lucide:chevron-down"
-              class="ml-2 h-4 w-4"
-            />
+          <Button variant="outline" class="ml-auto">
+            Columns
+            <Icon name="lucide:chevron-down" class="ml-2 h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuCheckboxItem
-            v-for="column in table.getAllColumns().filter((column) => column.getCanHide())"
-            :key="column.id"
-            class="capitalize"
-            :checked="column.getIsVisible()"
-            @update:checked="(value) => {
+          <DropdownMenuCheckboxItem v-for="column in table.getAllColumns().filter((column) => column.getCanHide())"
+            :key="column.id" class="capitalize" :checked="column.getIsVisible()" @update:checked="(value) => {
               column.toggleVisibility(!!value)
-            }"
-          >
+            }">
             {{ column.id }}
           </DropdownMenuCheckboxItem>
         </DropdownMenuContent>
@@ -79,46 +66,25 @@ const table = useVueTable({
     <div class="rounded-md border">
       <Table>
         <TableHeader>
-          <TableRow
-            v-for="headerGroup in table.getHeaderGroups()"
-            :key="headerGroup.id"
-          >
-            <TableHead
-              v-for="header in headerGroup.headers"
-              :key="header.id"
-            >
-              <FlexRender
-                v-if="!header.isPlaceholder"
-                :render="header.column.columnDef.header"
-                :props="header.getContext()"
-              />
+          <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
+            <TableHead v-for="header in headerGroup.headers" :key="header.id">
+              <FlexRender v-if="!header.isPlaceholder" :render="header.column.columnDef.header"
+                :props="header.getContext()" />
             </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           <template v-if="table.getRowModel().rows?.length">
-            <TableRow
-              v-for="row in table.getRowModel().rows"
-              :key="row.id"
-              :data-state="row.getIsSelected() && 'selected'"
-            >
-              <TableCell
-                v-for="cell in row.getVisibleCells()"
-                :key="cell.id"
-              >
-                <FlexRender
-                  :render="cell.column.columnDef.cell"
-                  :props="cell.getContext()"
-                />
+            <TableRow v-for="row in table.getRowModel().rows" :key="row.id"
+              :data-state="row.getIsSelected() && 'selected'">
+              <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+                <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
               </TableCell>
             </TableRow>
           </template>
 
           <TableRow v-else>
-            <TableCell
-              :colspan="columns.length"
-              class="h-24 text-center"
-            >
+            <TableCell :colspan="columns.length" class="h-24 text-center">
               No results.
             </TableCell>
           </TableRow>
@@ -132,20 +98,10 @@ const table = useVueTable({
         {{ table.getFilteredRowModel().rows.length }} row(s) selected.
       </div>
       <div class="space-x-2">
-        <Button
-          variant="outline"
-          size="sm"
-          :disabled="!table.getCanPreviousPage()"
-          @click="table.previousPage()"
-        >
+        <Button variant="outline" size="sm" :disabled="!table.getCanPreviousPage()" @click="table.previousPage()">
           Previous
         </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          :disabled="!table.getCanNextPage()"
-          @click="table.nextPage()"
-        >
+        <Button variant="outline" size="sm" :disabled="!table.getCanNextPage()" @click="table.nextPage()">
           Next
         </Button>
       </div>

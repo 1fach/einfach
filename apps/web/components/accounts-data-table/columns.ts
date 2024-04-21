@@ -3,8 +3,8 @@ import { createColumnHelper } from '@tanstack/vue-table'
 import type { Payment } from './data'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import DropdownAction from '@/components/spreadsheet/DropdownAction.vue'
-import SortIcon from '@/components/spreadsheet/SortIcon.vue'
+import DropdownAction from './DropdownAction.vue'
+import SortIcon from './SortIcon.vue'
 
 const columnHelper = createColumnHelper<Payment>()
 
@@ -16,13 +16,13 @@ export const columns = [
         'checked':
           table.getIsAllPageRowsSelected()
           || (table.getIsSomePageRowsSelected() && 'indeterminate'),
-        'onUpdate:checked': value => table.toggleAllPageRowsSelected(!!value),
+        'onUpdate:checked': (value) => table.toggleAllPageRowsSelected(!!value),
         'ariaLabel': 'Select all',
       }),
     cell: ({ row }) => {
       return h(Checkbox, {
         'checked': row.getIsSelected(),
-        'onUpdate:checked': value => row.toggleSelected(!!value),
+        'onUpdate:checked': (value) => row.toggleSelected(!!value),
         'ariaLabel': 'Select row',
       })
     },

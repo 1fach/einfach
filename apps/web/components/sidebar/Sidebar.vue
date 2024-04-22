@@ -38,12 +38,21 @@ const links: LinkProp[] = [
 
 <template>
   <div :class="cn('flex h-[52px] items-center justify-center', isCollapsed ? 'h-[52px]' : 'px-2')">
-    <SidebarAccountSwitcher :is-collapsed="isCollapsed" :accounts="accounts" />
+    <SidebarAccountSwitcher
+      :is-collapsed="isCollapsed"
+      :accounts="accounts"
+    />
   </div>
   <Separator />
-  <SidebarNav :is-collapsed="isCollapsed" :links="links" />
+  <SidebarNav
+    :is-collapsed="isCollapsed"
+    :links="links"
+  />
   <Separator class="mb-4" />
-  <div class="px-5 flex flex-col content-between gap-6" :class="{ hidden: isCollapsed }">
+  <div
+    class="px-5 flex flex-col content-between gap-6"
+    :class="{ hidden: isCollapsed }"
+  >
     <SidebarAccounts />
     <div>
       <SidebarCreateAccount />

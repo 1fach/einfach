@@ -23,7 +23,7 @@ interface MonthPickerProps {
 
 const { currentMonth } = defineProps<MonthPickerProps>()
 
-const currentYear = ref(format(currentMonth, 'yyyy'))
+const currentYear = useState(() => format(currentMonth, 'yyyy'))
 const firstDayCurrentYear = computed(() => parse(currentYear.value, 'yyyy', new Date()))
 const months = computed(() => eachMonthOfInterval({
   start: firstDayCurrentYear.value,

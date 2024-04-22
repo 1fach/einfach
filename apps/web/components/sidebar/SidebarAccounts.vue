@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const isOpen = ref(true)
+const isOpen = useState(() => true)
 </script>
 
 <template>

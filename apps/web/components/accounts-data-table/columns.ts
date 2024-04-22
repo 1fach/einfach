@@ -1,10 +1,10 @@
 import { h } from 'vue'
 import { createColumnHelper } from '@tanstack/vue-table'
 import type { Payment } from './data'
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
 import DropdownAction from './DropdownAction.vue'
 import SortIcon from './SortIcon.vue'
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
 
 const columnHelper = createColumnHelper<Payment>()
 
@@ -16,14 +16,16 @@ export const columns = [
         'checked':
           table.getIsAllPageRowsSelected()
           || (table.getIsSomePageRowsSelected() && 'indeterminate'),
-        'onUpdate:checked': (value) => table.toggleAllPageRowsSelected(!!value),
+        'onUpdate:checked': value => table.toggleAllPageRowsSelected(!!value),
         'ariaLabel': 'Select all',
+        'class': 'block',
       }),
     cell: ({ row }) => {
       return h(Checkbox, {
         'checked': row.getIsSelected(),
-        'onUpdate:checked': (value) => row.toggleSelected(!!value),
+        'onUpdate:checked': value => row.toggleSelected(!!value),
         'ariaLabel': 'Select row',
+        'class': 'block',
       })
     },
     enableSorting: false,
@@ -48,7 +50,14 @@ export const columns = [
     cell: ({ row }) => h('div', { class: 'lowercase' }, row.getValue('email')),
   }),
   columnHelper.accessor('amount', {
-    header: () => h('div', { class: 'text-right' }, 'Amount'),
+    header: ({ column }) => h(
+      Button,
+      {
+        variant: 'ghost',
+        onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+      },
+      () => ['Amount', h(SortIcon)],
+    ),
     cell: ({ row }) => {
       const amount = Number.parseFloat(row.getValue('amount'))
 
@@ -58,7 +67,7 @@ export const columns = [
         currency: 'USD',
       }).format(amount)
 
-      return h('div', { class: 'text-right font-medium' }, formatted)
+      return h('div', { class: 'font-medium' }, formatted)
     },
   }),
   columnHelper.display({

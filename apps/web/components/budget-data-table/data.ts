@@ -1,86 +1,86 @@
 export interface Budget {
   id: string
-  category: string
+  group: string
   assigned: number
   activity: number
   available: number
   categories: Budget[]
 }
 
-export const data: Budget[] =  [
+export const data: Budget[] = [
   {
-    id: "1",
-    category: "Food",
+    id: '1',
+    group: 'Food',
     assigned: 500,
     activity: 400,
     available: 100,
     categories: [
       {
-        id: "1.1",
-        category: "Groceries",
+        id: '1.1',
+        group: 'Groceries',
         assigned: 300,
         activity: 250,
         available: 50,
-        categories: []
+        categories: [],
       },
       {
-        id: "1.2",
-        category: "Dining Out",
+        id: '1.2',
+        group: 'Dining Out',
         assigned: 200,
         activity: 150,
         available: 50,
-        categories: []
-      }
-    ]
+        categories: [],
+      },
+    ],
   },
   {
-    id: "2",
-    category: "Transportation",
+    id: '2',
+    group: 'Transportation',
     assigned: 200,
     activity: 180,
     available: 20,
     categories: [
       {
-        id: "2.1",
-        category: "Gas",
+        id: '2.1',
+        group: 'Gas',
         assigned: 100,
         activity: 90,
         available: 10,
-        categories: []
+        categories: [],
       },
       {
-        id: "2.2",
-        category: "Public Transport",
+        id: '2.2',
+        group: 'Public Transport',
         assigned: 100,
         activity: 90,
         available: 10,
-        categories: []
-      }
-    ]
+        categories: [],
+      },
+    ],
   },
   {
-    id: "3",
-    category: "Entertainment",
+    id: '3',
+    group: 'Entertainment',
     assigned: 100,
     activity: 80,
     available: 20,
     categories: [
       {
-        id: "3.1",
-        category: "Movies",
+        id: '3.1',
+        group: 'Movies',
         assigned: 50,
         activity: 40,
         available: 10,
-        categories: []
+        categories: [],
       },
       {
-        id: "3.2",
-        category: "Concerts",
+        id: '3.2',
+        group: 'Concerts',
         assigned: 50,
         activity: 40,
         available: 10,
-        categories: []
-      }
-    ]
-  }
-];
+        categories: [],
+      },
+    ],
+  },
+]

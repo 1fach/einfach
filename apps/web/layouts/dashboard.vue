@@ -1,7 +1,11 @@
 <script setup lang="ts">
 const navCollapsedSize = 2
 const isCollapsed = useState(() => false)
-const defaultLayout = [100, 440]
+
+// Persist state with SSR
+const layout = useCookie<number[]>('splitter:layout', {
+  default: () => ([15, 85]),
+})
 
 function onCollapse() {
   isCollapsed.value = true
@@ -33,17 +37,18 @@ const accounts = [
 <template>
   <TooltipProvider :delay-duration="0">
     <ResizablePanelGroup
-      id="budget-panel-group"
+      id="bpg-1"
       direction="horizontal"
       class="min-h-screen items-stretch"
+      @layout="layout = $event"
     >
       <ResizablePanel
-        id="sidebar-panel"
-        :default-size="defaultLayout[0]"
+        id="bpg-1-side-1"
+        :default-size="layout[0]"
         :collapsed-size="navCollapsedSize"
         collapsible
         :min-size="15"
-        :max-size="25"
+        :max-size="20"
         :class="cn(isCollapsed && 'min-w-[50px] transition-all duration-300 ease-in-out')"
         @expand="onExpand"
         @collapse="onCollapse"
@@ -54,12 +59,12 @@ const accounts = [
         />
       </ResizablePanel>
       <ResizableHandle
-        id="sidebar-handle"
+        id="bpg-1-sideresize-1"
         with-handle
       />
       <ResizablePanel
-        id="app-panel"
-        :default-size="defaultLayout[1]"
+        id="bpg-1-main-1"
+        :default-size="layout[1]"
         :min-size="30"
       >
         <div class="container py-10 mx-auto">

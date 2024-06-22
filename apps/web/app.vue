@@ -6,6 +6,7 @@ const useIdFunction = () => useId()
 </script>
 
 <template>
+  <NuxtPwaManifest />
   <NuxtLoadingIndicator />
   <ConfigProvider :use-id="useIdFunction">
     <NuxtLayout>

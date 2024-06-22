@@ -51,8 +51,8 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0(vue@3.4.29(typescript@5.5.2))
       wa-sqlite:
-        specifier: github:rhashimoto/wa-sqlite
-        version: https://codeload.github.com/rhashimoto/wa-sqlite/tar.gz/5c3691569c150ca884314aa1a0d7e2760c48e873
+        specifier: github:rhashimoto/wa-sqlite#legacy-0.x
+        version: https://codeload.github.com/rhashimoto/wa-sqlite/tar.gz/6dbe4f044502a7a285e815896f56304a808fe25b
     devDependencies:
       '@nuxt/eslint':
         specifier: ^0.3.13
@@ -5765,9 +5765,9 @@ packages:
       typescript:
         optional: true
 
-  wa-sqlite@https://codeload.github.com/rhashimoto/wa-sqlite/tar.gz/5c3691569c150ca884314aa1a0d7e2760c48e873:
-    resolution: {tarball: https://codeload.github.com/rhashimoto/wa-sqlite/tar.gz/5c3691569c150ca884314aa1a0d7e2760c48e873}
-    version: 1.0.0-beta.2
+  wa-sqlite@https://codeload.github.com/rhashimoto/wa-sqlite/tar.gz/6dbe4f044502a7a285e815896f56304a808fe25b:
+    resolution: {tarball: https://codeload.github.com/rhashimoto/wa-sqlite/tar.gz/6dbe4f044502a7a285e815896f56304a808fe25b}
+    version: 0.9.14
 
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
@@ -12731,7 +12731,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.2
 
-  wa-sqlite@https://codeload.github.com/rhashimoto/wa-sqlite/tar.gz/5c3691569c150ca884314aa1a0d7e2760c48e873: {}
+  wa-sqlite@https://codeload.github.com/rhashimoto/wa-sqlite/tar.gz/6dbe4f044502a7a285e815896f56304a808fe25b: {}
 
   webidl-conversions@3.0.1: {}
 

@@ -1,12 +1,11 @@
 import { Factory, SQLITE_OPEN_READONLY, SQLITE_ROW } from 'wa-sqlite'
 
 import SQLiteAsyncESMFactory from 'wa-sqlite/dist/wa-sqlite-async.mjs'
+/* @ts-expect-error wasm type err */
+import wasmUrl from 'wa-sqlite/dist/wa-sqlite-async.wasm?url'
 import { IDBBatchAtomicVFS } from './idb/IDBBatchAtomicVFS'
 
 import type { InitOptions, SQLiteDB } from './types'
-
-/* @ts-expect-error wasm type err */
-import wasmUrl from '@/assets/wa-sqlite-async.wasm?url'
 
 /**
  * load db
@@ -57,7 +56,7 @@ export async function initSQLite(fileName: string, readonly?: boolean): Promise<
 
           while ((await sqlite.step(stmt)) === SQLITE_ROW) {
             const row = sqlite.row(stmt)
-            rows.push(Object.fromEntries(cols.map((key, i) => [key, row[i]])))
+            rows.push(Object.fromEntries(cols.map((key, i) => [key, row[i] as SQLiteCompatibleType])))
           }
           return rows
         }

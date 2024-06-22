@@ -24,7 +24,7 @@
     "radix-vue": "^1.8.4",
     "vue": "^3.4.29",
     "vue-router": "^4.4.0",
-    "wa-sqlite": "github:rhashimoto/wa-sqlite"
+    "wa-sqlite": "github:rhashimoto/wa-sqlite#legacy-0.x"
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.3.13",

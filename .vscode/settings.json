@@ -1,5 +1,5 @@
 {
-  "eslint.experimental.useFlatConfig": true,
+  "eslint.useFlatConfig": true,
   "eslint.workingDirectories": [
     {
       "mode": "auto"
@@ -14,4 +14,8 @@
   "editor.quickSuggestions": {
     "strings": true
   },
+  "elixirLS.projectDir": "apps/api",
+  "emmet.includeLanguages": {
+    "phoenix-heex": "html"
+  }
 }

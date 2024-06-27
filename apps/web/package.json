@@ -10,7 +10,7 @@
     "lint:fix": "eslint . --fix",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 assets/icons/logo.svg"
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 app/assets/icons/logo.svg"
   },
   "dependencies": {
     "@tanstack/vue-table": "^8.17.3",

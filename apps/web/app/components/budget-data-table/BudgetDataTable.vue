@@ -10,14 +10,6 @@ import {
 
 import { columns } from './columns'
 import { data } from './data'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
 
 const rowSelection = useState<RowSelectionState>(() => ({}))
 const rowExpanded = useState<ExpandedState>(() => ({}))

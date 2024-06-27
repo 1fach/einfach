@@ -1,8 +1,5 @@
 // DataTableDropDown.vue
 <script setup lang="ts">
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { Button } from '@/components/ui/button'
-
 defineProps<{
   payment: {
     id: string

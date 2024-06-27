@@ -68,7 +68,7 @@ const table = useVueTable({
             :key="column.id"
             class="capitalize"
             :checked="column.getIsVisible()"
-            @update:checked="(value) => {
+            @update:checked="(value: boolean) => {
               column.toggleVisibility(!!value)
             }"
           >

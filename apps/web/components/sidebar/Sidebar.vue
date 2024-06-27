@@ -19,7 +19,7 @@ const links: LinkProp[] = [
     title: 'Budget',
     label: '128',
     url: '/budget',
-    icon: 'carbon:money',
+    icon: 'lucide:circle-dollar-sign',
   },
   {
     title: 'Reports',

@@ -9,7 +9,7 @@
         variant="outline"
       >
         <Icon
-          name="bi:plus-circle-fill"
+          name="lucide:circle-plus"
           class="mr-2"
         /> Add Account
       </Button>

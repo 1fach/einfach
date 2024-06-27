@@ -19,17 +19,17 @@ const accounts = [
   {
     label: 'Alicia Koch',
     email: 'alicia@example.com',
-    icon: 'ion:logo-vercel',
+    icon: 'tabler:brand-vercel',
   },
   {
     label: 'Alicia Koch',
     email: 'alicia@gmail.com',
-    icon: 'mdi:google',
+    icon: 'tabler:brand-google',
   },
   {
     label: 'Alicia Koch',
     email: 'alicia@me.com',
-    icon: 'bx:bxl-gmail',
+    icon: 'tabler:brand-gmail',
   },
 ]
 </script>
@@ -60,7 +60,6 @@ const accounts = [
       </ResizablePanel>
       <ResizableHandle
         id="bpg-1-sideresize-1"
-        with-handle
       />
       <ResizablePanel
         id="bpg-1-main-1"

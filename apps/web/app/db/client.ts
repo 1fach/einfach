@@ -4,12 +4,11 @@ import {
 import { SqliteBuilder } from 'kysely-sqlite-builder'
 import type { DatabaseSchema } from './schema'
 
-/* @ts-expect-error Worker type */
 import Worker from '@/assets/worker?worker'
 
 const dialect = new WaSqliteWorkerDialect({
   fileName: 'einfach.db',
-  worker: Worker,
+  worker: new Worker(),
   preferOPFS: false,
 })
 

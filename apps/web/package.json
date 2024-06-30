@@ -40,7 +40,7 @@
     "nuxt": "^3.12.2",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "~5.4.5",
-    "vue-tsc": "~1.8.27"
+    "typescript": "^5.5.2",
+    "vue-tsc": "^2.0.24"
   }
 }

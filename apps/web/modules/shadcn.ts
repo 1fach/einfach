@@ -84,6 +84,20 @@ export default defineNuxtModule<ShadcnVueOptions>({
       name: `${prefix}PaginationListItem`,
       priority: 999,
     })
+
+    addComponent({
+      filePath: 'radix-vue',
+      export: 'SplitterPanel',
+      name: `${prefix}ResizablePanel`,
+      priority: 999,
+    })
+
+    addComponent({
+      filePath: 'radix-vue',
+      export: 'DropdownMenuPortal',
+      name: `${prefix}DropdownMenuPortal`,
+      priority: 999,
+    })
   },
 })
 

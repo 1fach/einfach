@@ -18,7 +18,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/fonts',
     '@nuxt/icon',
-    'shadcn-nuxt',
     '@vite-pwa/nuxt',
   ],
   eslint: {
@@ -28,10 +27,6 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: '',
-  },
-  shadcn: {
-    prefix: '',
-    componentDir: './app/components/ui',
   },
   pwa: {
     registerType: 'autoUpdate',

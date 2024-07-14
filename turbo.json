@@ -11,7 +11,8 @@
       "outputs": [
         ".nuxt/**",
         ".output/**",
-        "dist/**"
+        "dist/**",
+        "_build/**"
       ]
     },
     "lint": {},

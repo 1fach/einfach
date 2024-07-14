@@ -17,5 +17,7 @@
   "elixirLS.projectDir": "apps/api",
   "emmet.includeLanguages": {
     "phoenix-heex": "html"
-  }
+  },
+  "nuxtr.monorepoMode.DirectoryName": "apps/web",
+  "nuxtr.defaultPackageManager": "pnpm"
 }

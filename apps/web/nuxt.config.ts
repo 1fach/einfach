@@ -12,6 +12,12 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   telemetry: false,
+  components: [
+    {
+      path: '~/components',
+      extensions: ['.vue'],
+    },
+  ],
   modules: [
     '@nuxt/eslint',
     '@nuxtjs/color-mode',
@@ -65,4 +71,5 @@ export default defineNuxtConfig({
       globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
     },
   },
+  compatibilityDate: '2024-07-02',
 })

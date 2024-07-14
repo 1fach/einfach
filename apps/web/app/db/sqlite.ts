@@ -2,7 +2,6 @@ import { Factory, SQLITE_OPEN_READONLY, SQLITE_ROW } from 'wa-sqlite'
 
 import SQLiteAsyncESMFactory from 'wa-sqlite/dist/wa-sqlite-async.mjs'
 
-/* @ts-expect-error wasm url type */
 import wasmUrl from 'wa-sqlite/dist/wa-sqlite-async.wasm?url'
 import { IDBBatchAtomicVFS } from './idb/IDBBatchAtomicVFS'
 

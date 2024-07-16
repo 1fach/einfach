@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter'
-import { extractClosestEdge } from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge'
-import { reorderWithEdge } from '@atlaskit/pragmatic-drag-and-drop-hitbox/util/reorder-with-edge'
-import { triggerPostMoveFlash } from '@atlaskit/pragmatic-drag-and-drop-flourish/trigger-post-move-flash'
 import { isTaskData, getTasks, type TTask } from './task-data'
 
 const tasks = useState<TTask[]>(() => getTasks())
 
-watchEffect((onCleanup) => {
-  const cleanup = monitorForElements({
+let cleanup = () => {}
+onMounted(() => {
+  const { $monitorForElements, $extractClosestEdge, $reorderWithEdge, $triggerPostMoveFlash } = useNuxtApp()
+
+  cleanup = $monitorForElements({
     canMonitor({ source }) {
       return isTaskData(source.data)
     },
@@ -36,10 +35,9 @@ watchEffect((onCleanup) => {
         return
       }
 
-      const closestEdgeOfTarget = extractClosestEdge(targetData)
+      const closestEdgeOfTarget = $extractClosestEdge(targetData)
 
-      // Using `flushSync` so we can query the DOM straight after this line
-      tasks.value = reorderWithEdge({
+      tasks.value = $reorderWithEdge({
         list: tasks.value,
         startIndex: indexOfSource,
         indexOfTarget,
@@ -55,12 +53,14 @@ watchEffect((onCleanup) => {
         `[data-task-id="${sourceData.taskId}"]`,
       )
       if (element instanceof HTMLElement) {
-        triggerPostMoveFlash(element)
+        $triggerPostMoveFlash(element)
       }
     },
   })
+})
 
-  onCleanup(cleanup)
+onUnmounted(() => {
+  cleanup()
 })
 </script>
 

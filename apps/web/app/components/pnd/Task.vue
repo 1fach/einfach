@@ -1,17 +1,5 @@
 <script setup lang="ts">
-import {
-  draggable,
-  dropTargetForElements,
-} from '@atlaskit/pragmatic-drag-and-drop/element/adapter'
-import { combine } from '@atlaskit/pragmatic-drag-and-drop/combine'
-import { setCustomNativeDragPreview } from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview'
-import { pointerOutsideOfPreview } from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview'
-import {
-  attachClosestEdge,
-  type Edge,
-  extractClosestEdge,
-} from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge'
-
+import type { Edge } from '@atlaskit/pragmatic-drag-and-drop-hitbox/types'
 import { getTaskData, isTaskData, type TTask } from './task-data'
 
 const { task } = defineProps<{
@@ -42,21 +30,24 @@ const idle: TaskState = { type: 'idle' }
 const elRef = ref<HTMLDivElement | null>(null)
 const elState = useState<TaskState>('task_' + task.id, () => idle)
 
-watchEffect((onCleanup) => {
+let cleanup = () => {}
+onMounted(() => {
+  const { $draggable, $dropTargetForElements, $combine, $setCustomNativeDragPreview, $pointerOutsideOfPreview, $attachClosestEdge, $extractClosestEdge } = useNuxtApp()
+
   if (elRef.value == null) {
     return
   }
 
-  const cleanup = combine(
-    draggable({
+  cleanup = $combine(
+    $draggable({
       element: elRef.value,
       getInitialData() {
         return getTaskData(task)
       },
       onGenerateDragPreview({ nativeSetDragImage }) {
-        setCustomNativeDragPreview({
+        $setCustomNativeDragPreview({
           nativeSetDragImage,
-          getOffset: pointerOutsideOfPreview({
+          getOffset: $pointerOutsideOfPreview({
             x: '16px',
             y: '8px',
           }),
@@ -72,7 +63,7 @@ watchEffect((onCleanup) => {
         elState.value = idle
       },
     }),
-    dropTargetForElements({
+    $dropTargetForElements({
       element: elRef.value,
       canDrop({ source }) {
         // not allowing dropping on yourself
@@ -84,7 +75,7 @@ watchEffect((onCleanup) => {
       },
       getData({ input }) {
         const data = getTaskData(task)
-        return attachClosestEdge(data, {
+        return $attachClosestEdge(data, {
           element: elRef.value!,
           input,
           allowedEdges: ['top', 'bottom'],
@@ -94,11 +85,11 @@ watchEffect((onCleanup) => {
         return true
       },
       onDragEnter({ self }) {
-        const closestEdge = extractClosestEdge(self.data)
+        const closestEdge = $extractClosestEdge(self.data)
         elState.value = { type: 'is-dragging-over', closestEdge }
       },
       onDrag({ self }) {
-        const closestEdge = extractClosestEdge(self.data)
+        const closestEdge = $extractClosestEdge(self.data)
 
         // Only need to update react state if nothing has changed.
         if (
@@ -116,10 +107,10 @@ watchEffect((onCleanup) => {
       },
     }),
   )
+})
 
-  onCleanup(() => {
-    cleanup()
-  })
+onUnmounted(() => {
+  cleanup()
 })
 </script>
 

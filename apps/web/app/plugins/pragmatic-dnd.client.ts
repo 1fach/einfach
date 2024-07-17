@@ -16,16 +16,18 @@ import { triggerPostMoveFlash } from '@atlaskit/pragmatic-drag-and-drop-flourish
 export default defineNuxtPlugin(() => {
   return {
     provide: {
-      monitorForElements,
-      draggable,
-      dropTargetForElements,
-      combine,
-      setCustomNativeDragPreview,
-      pointerOutsideOfPreview,
-      attachClosestEdge,
-      extractClosestEdge,
-      reorderWithEdge,
-      triggerPostMoveFlash,
+      PragmaticDND: {
+        monitorForElements,
+        draggable,
+        dropTargetForElements,
+        combine,
+        setCustomNativeDragPreview,
+        pointerOutsideOfPreview,
+        attachClosestEdge,
+        extractClosestEdge,
+        reorderWithEdge,
+        triggerPostMoveFlash,
+      },
     },
   }
 })

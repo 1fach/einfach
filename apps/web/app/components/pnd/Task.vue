@@ -32,22 +32,22 @@ const elState = useState<TaskState>('task_' + task.id, () => idle)
 
 let cleanup = () => {}
 onMounted(() => {
-  const { $draggable, $dropTargetForElements, $combine, $setCustomNativeDragPreview, $pointerOutsideOfPreview, $attachClosestEdge, $extractClosestEdge } = useNuxtApp()
+  const { draggable, dropTargetForElements, combine, setCustomNativeDragPreview, pointerOutsideOfPreview, attachClosestEdge, extractClosestEdge } = useNuxtApp().$PragmaticDND
 
   if (elRef.value == null) {
     return
   }
 
-  cleanup = $combine(
-    $draggable({
+  cleanup = combine(
+    draggable({
       element: elRef.value,
       getInitialData() {
         return getTaskData(task)
       },
       onGenerateDragPreview({ nativeSetDragImage }) {
-        $setCustomNativeDragPreview({
+        setCustomNativeDragPreview({
           nativeSetDragImage,
-          getOffset: $pointerOutsideOfPreview({
+          getOffset: pointerOutsideOfPreview({
             x: '16px',
             y: '8px',
           }),
@@ -63,7 +63,7 @@ onMounted(() => {
         elState.value = idle
       },
     }),
-    $dropTargetForElements({
+    dropTargetForElements({
       element: elRef.value,
       canDrop({ source }) {
         // not allowing dropping on yourself
@@ -75,7 +75,7 @@ onMounted(() => {
       },
       getData({ input }) {
         const data = getTaskData(task)
-        return $attachClosestEdge(data, {
+        return attachClosestEdge(data, {
           element: elRef.value!,
           input,
           allowedEdges: ['top', 'bottom'],
@@ -85,11 +85,11 @@ onMounted(() => {
         return true
       },
       onDragEnter({ self }) {
-        const closestEdge = $extractClosestEdge(self.data)
+        const closestEdge = extractClosestEdge(self.data)
         elState.value = { type: 'is-dragging-over', closestEdge }
       },
       onDrag({ self }) {
-        const closestEdge = $extractClosestEdge(self.data)
+        const closestEdge = extractClosestEdge(self.data)
 
         // Only need to update react state if nothing has changed.
         if (

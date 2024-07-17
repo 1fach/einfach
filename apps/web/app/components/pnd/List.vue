@@ -5,9 +5,9 @@ const tasks = useState<TTask[]>(() => getTasks())
 
 let cleanup = () => {}
 onMounted(() => {
-  const { $monitorForElements, $extractClosestEdge, $reorderWithEdge, $triggerPostMoveFlash } = useNuxtApp()
+  const { monitorForElements, extractClosestEdge, reorderWithEdge, triggerPostMoveFlash } = useNuxtApp().$PragmaticDND
 
-  cleanup = $monitorForElements({
+  cleanup = monitorForElements({
     canMonitor({ source }) {
       return isTaskData(source.data)
     },
@@ -35,9 +35,9 @@ onMounted(() => {
         return
       }
 
-      const closestEdgeOfTarget = $extractClosestEdge(targetData)
+      const closestEdgeOfTarget = extractClosestEdge(targetData)
 
-      tasks.value = $reorderWithEdge({
+      tasks.value = reorderWithEdge({
         list: tasks.value,
         startIndex: indexOfSource,
         indexOfTarget,
@@ -50,10 +50,10 @@ onMounted(() => {
       // and then we could retrieve that element after the drop and use
       // `triggerPostMoveFlash`. But this gets the job done.
       const element = document.querySelector(
-        `[data-task-id="${sourceData.taskId}"]`,
+        `[data-task-id="{sourceData.taskId}"]`,
       )
       if (element instanceof HTMLElement) {
-        $triggerPostMoveFlash(element)
+        triggerPostMoveFlash(element)
       }
     },
   })

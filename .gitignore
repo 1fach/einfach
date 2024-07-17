@@ -2,11 +2,6 @@
 
 # dependencies
 node_modules
-.pnp
-.pnp.js
-
-# testing
-coverage
 
 # build outputs
 .nuxt/
@@ -30,8 +25,3 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# turbo
-.turbo
-
-# vercel
-.vercel

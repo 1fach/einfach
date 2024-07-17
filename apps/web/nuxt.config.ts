@@ -34,6 +34,9 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
   },
+  fonts: {
+    provider: 'bunny',
+  },
   pwa: {
     registerType: 'autoUpdate',
     includeAssets: ['favicon.ico', 'icons/apple-touch-icon.png'],

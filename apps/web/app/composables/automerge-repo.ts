@@ -1,9 +1,9 @@
 import type { Repo } from '@automerge/automerge-repo'
 
 export const useAutomergeRepo = () => {
-  const store = useAutomergeStore()
+  const globalRepo = useState<Repo | null>('automerge-repo', () => shallowRef(null))
   const setRepo = (repo: Repo) => {
-    store.repo = repo
+    globalRepo.value = repo
   }
-  return [computed(() => store.repo), setRepo] as const
+  return [computed(() => globalRepo.value), setRepo] as const
 }

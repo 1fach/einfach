@@ -33,7 +33,6 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@vite-pwa/nuxt',
-    '@pinia/nuxt',
   ],
   eslint: {
     config: {

@@ -1,35 +1,41 @@
-import type { AnyDocumentId, DocHandleChangePayload } from '@automerge/automerge-repo/slim'
+import type { AutomergeUrl } from '@automerge/automerge-repo/slim'
 import type { ChangeFn, ChangeOptions, Doc } from '@automerge/automerge/slim/next'
 
-export const useAutomergeDocument = <T> (
-  id: AnyDocumentId,
+export const useAutomergeDocument = <T>(
+  id: string,
 ): [
   ComputedRef<Doc<T> | undefined>,
   (changeFn: ChangeFn<T>, options?: ChangeOptions<T> | undefined) => void,
 ] => {
-  const store = useAutomergeStore<T>()
-  store.setDocHandleAndDoc(id)
+  const [repo, _] = useAutomergeRepo()
+  if (!repo.value) {
+    throw new Error('Repo not initialized')
+  }
 
-  const onChange = (h: DocHandleChangePayload<T>) => store.setDocHandleAndDoc(h.handle.url)
-  const onDelete = () => store.setDocHandleAndDoc()
+  const docHandle = repo.value.find<T>(id as AutomergeUrl)
+  const doc = useState<Doc<T>>('doc-state-' + id, () => shallowRef(docHandle.docSync() as Doc<T>))
+  const refreshDoc = () => doc.value = docHandle.docSync() as Doc<T>
+
   const cleanUp = () => {
-    if (!store.docHandle) return
-    store.docHandle.removeListener('change', onChange)
-    store.docHandle.removeListener('delete', onDelete)
+    if (docHandle) {
+      docHandle.removeListener('change', refreshDoc)
+      docHandle.removeListener('delete', refreshDoc)
+    }
   }
 
   onMounted(() => {
-    if (!store.docHandle) return
-
-    store.docHandle.on('change', onChange)
-    store.docHandle.on('delete', onDelete)
+    if (docHandle) {
+      docHandle.on('change', refreshDoc)
+      docHandle.on('delete', refreshDoc)
+    }
   })
   onUnmounted(() => cleanUp())
 
   const changeDoc = (changeFn: ChangeFn<T>, options?: ChangeOptions<T> | undefined) => {
-    if (!store.docHandle) return
-    store.docHandle.change(changeFn, options)
+    if (docHandle) {
+      docHandle.change(changeFn, options)
+    }
   }
 
-  return [computed(() => store.doc as Doc<T>), changeDoc] as const
+  return [computed(() => doc.value), changeDoc] as const
 }

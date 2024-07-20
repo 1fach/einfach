@@ -1,3 +1,5 @@
+import wasm from 'vite-plugin-wasm'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   future: {
@@ -5,6 +7,12 @@ export default defineNuxtConfig({
   },
   app: {
     rootId: 'einfach',
+  },
+  vite: {
+    worker: {
+      format: 'es',
+    },
+    plugins: [wasm()],
   },
   typescript: {
     typeCheck: true,
@@ -25,6 +33,7 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@vite-pwa/nuxt',
+    '@pinia/nuxt',
   ],
   eslint: {
     config: {

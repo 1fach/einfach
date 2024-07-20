@@ -16,6 +16,10 @@
     "@atlaskit/pragmatic-drag-and-drop": "^1.2.1",
     "@atlaskit/pragmatic-drag-and-drop-flourish": "^1.1.0",
     "@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.0.3",
+    "@automerge/automerge": "^2.2.5",
+    "@automerge/automerge-repo": "^1.2.1",
+    "@automerge/automerge-repo-network-broadcastchannel": "^1.2.1",
+    "@automerge/automerge-repo-storage-indexeddb": "^1.2.1",
     "@tanstack/vue-table": "^8.19.3",
     "@vueuse/core": "^10.11.0",
     "class-variance-authority": "^0.7.0",
@@ -33,6 +37,7 @@
     "@nuxt/icon": "^1.1.1",
     "@nuxtjs/color-mode": "^3.4.2",
     "@nuxtjs/tailwindcss": "^6.12.1",
+    "@pinia/nuxt": "^0.5.1",
     "@vite-pwa/assets-generator": "^0.2.4",
     "@vite-pwa/nuxt": "^0.9.1",
     "eslint": "^9.7.0",
@@ -41,6 +46,7 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.5.3",
     "vite": "^5.3.4",
+    "vite-plugin-wasm": "^3.3.0",
     "vue-tsc": "^2.0.26"
   },
   "packageManager": "pnpm@9.5.0"
